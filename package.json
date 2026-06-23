@@ -2,11 +2,11 @@
   "name": "nbwc-prediction-backend",
   "version": "1.0.0",
   "description": "FIFA WC Qualifying Prediction Competition Backend",
-  "main": "dist/index.js",
+  "start": "node dist/index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "npx prisma migrate deploy && node dist/index.js",
     "generate": "prisma generate",
     "migrate": "prisma migrate dev",
     "seed": "tsx src/script/seed.ts",
