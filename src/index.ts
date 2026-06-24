@@ -17,7 +17,7 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
-import rateLimit from "express-rate-limit";
+// import rateLimit from "express-rate-limit";
 import path from "path";
 import { config } from "./config";
 
@@ -38,20 +38,20 @@ app.use(morgan("combined"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-  message: "Too many requests from this IP",
-});
-app.use("/api/", limiter);
+// const limiter = rateLimit({
+//   windowMs: 15 * 60 * 1000,
+//   max: 100,
+//   message: "Too many requests from this IP",
+// });
+// app.use("/api/", limiter);
 
-const otpLimiter = rateLimit({
-  windowMs: 10 * 60 * 1000,
-  max: 5,
-  message: "Too many OTP requests",
-});
-app.use("/api/auth/resend-otp", otpLimiter);
-app.use("/api/auth/forgot-password", otpLimiter);
+// const otpLimiter = rateLimit({
+//   windowMs: 10 * 60 * 1000,
+//   max: 5,
+//   message: "Too many OTP requests",
+// });
+// app.use("/api/auth/resend-otp", otpLimiter);
+// app.use("/api/auth/forgot-password", otpLimiter);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/payments", paymentRoutes);
